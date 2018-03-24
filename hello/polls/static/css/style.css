@@ -1,0 +1,109 @@
+.main_title h1 {
+    padding-top: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.main_title p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 22px;
+    max-width: 660px;
+    margin: 40px auto 40px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+
+body {
+    background: url("../images/manu.jpg") no-repeat;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.main_title {
+    font-size: 200%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.main_row {
+    height: 80px;
+}
+
+.myfield {
+    border-color: white;
+    border-style: solid;
+    border-width: thin;
+    background-image: url("../images/walk.jpeg");
+    background-size: cover;
+    border-radius: 10px;
+    transition: transform .2s;
+}
+
+.start {
+    background-image: url("../images/start.jpg");
+    background-size: cover;
+}
+
+#go_button {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fffbfb !important;
+    outline:none;
+    text-align: center;
+    width: 200px;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 24px;
+    padding: 18px 24px;
+    transition:0.2s background-color;
+}
+
+#go_button:hover {
+    background-color:rgba(255,255,255,0.1);
+}
+
+#go_button:active {
+    transform:translateY(1px);
+}
+
+#dice_output {
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.start.highlight_field, .myfield.highlight_field {
+    transform: scale(2);
+}
+
+.start.upper_field, .myfield.upper_field {
+    z-index: 200;
+}
+
+.start.lower_field, .myfield.lower_field {
+    z-index: 100;
+}
+
+.light-grey {color:#000!important;background-color:#E6E9ED!important}
+
+.dividline {
+  margin: -20px 100px;
+  padding-top: 1px;
+  background-color: inherit;
+}
+
+#navbar-name {
+	float: left;
+	color: #fff;
+	font-size: 32px;
+}
+
+.menu-item {
+    color: white;
+    font-size: 20px;
+}

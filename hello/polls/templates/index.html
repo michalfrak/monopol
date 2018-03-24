@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<script>
+    var position = 1;
+    var previous_position = 1;
+    var delay = 500;
+
+    function getDice() {
+        previous_position = position;
+        var dice = Math.floor(Math.random() *6) + 1;
+        document.getElementById('dice_output').innerText = dice;
+        position += dice;
+        (function theLoop (i) {
+            setTimeout(function () {
+                go_next_field((i % 36) + 1);
+                i += 1;
+                if (i < position) {theLoop(i);}
+            }, delay);
+        })(previous_position);
+        setTimeout(function () {
+            $('#myModal').modal('show');
+
+        }, delay * dice + delay);
+
+        return position
+    }
+
+
+    function go_next_field(field) {
+        if (field !== 1) {
+            document.getElementById(field - 1).classList.remove("highlight_field");
+
+            setTimeout(function () {
+               document.getElementById(field - 1).classList.remove("upper_field");
+            }, delay / 2);
+        }
+        else {
+            document.getElementById('36').classList.remove("highlight_field");
+            document.getElementById('36').classList.remove("upper_field");
+        }
+        setTimeout(function () {
+            document.getElementById(field).classList.add("upper_field");
+            document.getElementById(field).classList.add("highlight_field");
+
+            }, delay / 2);
+        }
+</script>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+<!--navbar start-->
+
+<div class="navbar">
+
+
+        <div class="col-4">
+            <div class="navbar-brand" id="navbar-name">AKCJA REKRUTACJA</div>
+        </div>
+        <div class="col-5"></div>
+        <div class="col-1">
+              <div class="menu-item">O grze</div>
+        </div>
+        <div class="col-1">
+              <div class="menu-item">Firmy</div>
+        </div>
+        <div class="col-1">
+              <div class="menu-item">Kontakt</div>
+        </div>
+
+
+
+</div>
+
+<div class="dividline light-grey"></div>
+
+<!--navbar end-->
+
+
+
+
+
+    <div class="main_title">
+
+        <p>Graj i zdobywaj prawdziwe oferty pracy.</p>
+    </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="8"></div>
+                        <div class="col-1 myfield" id="9"></div>
+                        <div class="col-1 myfield" id="10"></div>
+                        <div class="col-1 myfield" id="11"></div>
+                        <div class="col-1 myfield" id="12"></div>
+                        <div class="col-1 myfield" id="13"></div>
+                        <div class="col-1 myfield" id="14"></div>
+                        <div class="col-1 myfield" id="15"></div>
+                        <div class="col-1 myfield" id="16"></div>
+                        <div class="col-1 myfield" id="17"></div>
+                        <div class="col-1 myfield" id="18"></div>
+                        <div class="col-1 myfield" id="19"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="7"></div>
+                        <div class="col-10"></div>
+                        <div class="col-1 myfield" id="20"></div>
+
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="6"></div>
+                        <div class="col-2"></div>
+                        <div class="col-3">
+                            <button type="button" class="btn btn-primary btn-block" id="go_button" onclick="getDice()">Rzuć kostką</button>
+                        </div>
+                        <div class="col-4" id="dice_output"></div>
+                        <div class="col-1" id="new_position"></div>
+                        <div class="col-1 myfield" id="21"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="5"></div>
+                        <div class="col-10"></div>
+                        <div class="col-1 myfield" id="22"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="4"></div>
+                        <div class="col-10"></div>
+                        <div class="col-1 myfield" id="23"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="3"></div>
+                        <div class="col-10"></div>
+                        <div class="col-1 myfield" id="24"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield" id="2"></div>
+                        <div class="col-10"></div>
+                        <div class="col-1 myfield" id="25"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="row main_row">
+                        <div class="col-1 myfield start" id="1"></div>
+                        <div class="col-1 myfield" id="36"></div>
+                        <div class="col-1 myfield" id="35"></div>
+                        <div class="col-1 myfield" id="34"></div>
+                        <div class="col-1 myfield" id="33"></div>
+                        <div class="col-1 myfield" id="32"></div>
+                        <div class="col-1 myfield" id="31"></div>
+                        <div class="col-1 myfield" id="30"></div>
+                        <div class="col-1 myfield" id="29"></div>
+                        <div class="col-1 myfield" id="28"></div>
+                        <div class="col-1 myfield" id="27"></div>
+                        <div class="col-1 myfield" id="26"></div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+        </div>
+
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Karta rekrutacji</h4>
+        </div>
+        <div class="modal-body">
+          <p>Trafiasz na rozmowę rekrutacyjną do firmy ABB. <br>Tam pytają, ile to jest 2 + 2?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</body>
+</html>
